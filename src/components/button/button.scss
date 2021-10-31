@@ -1,0 +1,22 @@
+@use "../../scss/" as *;
+
+.btn {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: $txt-color;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    padding: 1.5rem 5rem;
+    font-family: $font-family;
+    border-top-left-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+
+    &-main {
+        background-color: $main-color;
+    }
+
+    &-second {
+        background-color: $second-color;
+    }
+}

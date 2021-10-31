@@ -1,0 +1,88 @@
+@use "../../../scss/" as *;
+@use "sass:math";
+
+.champion-card {
+    $width: 450px;
+    width: $width;
+    height: #{math.div($width * 9, 16)}px;
+    position: relative;
+    pointer-events: none;
+
+    img {
+        max-width: 100%;
+        position: relative;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+
+    &:hover img {
+        opacity: 1;
+    }
+
+    .frame,
+    .name {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    &:hover .frame::before {
+        opacity: 1;
+        animation-play-state: running;
+    }
+
+    .frame {
+        width: 70%;
+        height: 80%;
+        overflow: hidden;
+        bottom: 0;
+        pointer-events: visible;
+
+        &::before {
+            content: "";
+            position: absolute;
+            width: 60%;
+            height: 150%;
+            background-image: linear-gradient(90deg, #cd6e36, #d400ff);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: rotate 3s linear infinite;
+            animation-play-state: paused;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .bg {
+            position: absolute;
+            inset: 4px;
+            &::before {
+                background-color: rgba($color: #000000, $alpha: 0);
+            }
+        }
+
+        &:hover .frame .bg::before {
+            background-color: rgba($color: #000000, $alpha: 0.6);
+        }
+    }
+
+    .name {
+        height: max-content;
+        bottom: 4px;
+        width: calc(70% - 8px);
+        text-align: center;
+        padding: 1rem 0;
+        background-color: rgba($color: $second-color, $alpha: 0.5);
+        text-transform: uppercase;
+        font-size: 1.5rem;
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}

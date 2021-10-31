@@ -1,0 +1,43 @@
+@use "../../../scss/" as *;
+
+.welcome {
+    &__content {
+        @include flex(center, center);
+    }
+
+    &__info,
+    &__img {
+        width: 50%;
+        height: 100%;
+    }
+
+    &__info {
+        @include flex(flex-start, flex-end);
+
+        &__content {
+            padding-left: 15rem;
+
+            .description {
+                font-size: 1rem;
+            }
+
+            .btns > * ~ * {
+                margin-left: 1rem;
+            }
+        }
+    }
+
+    &__img {
+        @include flex(flex-end, flex-start);
+
+        &__slide {
+            height: 915px;
+            width: 915px;
+            overflow: hidden;
+
+            canvas {
+                display: block;
+            }
+        }
+    }
+}

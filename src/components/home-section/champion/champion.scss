@@ -1,0 +1,29 @@
+@use "../../../scss/" as *;
+@use "sass:math";
+
+.champion {
+    &-list {
+        .swiper-slide {
+            width: 450px;
+            pointer-events: visible;
+            overflow: visible;
+            transform: translateX(200px);
+            opacity: 0;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+            transition-delay: 0s;
+        }
+    }
+
+    &.active &-list {
+        .swiper-slide {
+            transform: translateX(0);
+            opacity: 1;
+
+            @for $i from 1 through 10 {
+                &:nth-child(#{$i}) {
+                    transition-delay: #{math.div($i, 2)}s;
+                }
+            }
+        }
+    }
+}
